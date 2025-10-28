@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoRuta</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🌿 EcoRuta</h1>
+      <p>Tu guía ecológica urbana</p>
+    </header>
+    <button id="toggle-tema">🌙 Modo oscuro</button>
+
+    <!-- Menú de navegación -->
+    <nav>
+      <button data-section="retos">🗓️ Retos</button>
+      <button data-section="explorar">🧭 Consejos</button>
+      <button data-section="perfil">👤 Perfil</button>
+      <button data-section="ranking">🏆 Ranking</button>
+      <button data-section="configuracion">⚙️ Configuración</button>
+    </nav>
+
+    <!-- SECCIONES -->
+    <section id="retos" class="seccion activa">
+      <h2>Retos semanales</h2>
+      <div id="lista-retos"></div>
+
+      <form id="form-reto">
+        <input type="text" id="nuevo-reto" placeholder="Nuevo reto..." required>
+        <button type="submit">➕ Agregar</button>
+      </form>
+
+      <div id="lista-badges"></div>
+      <button id="reset">🔄 Reiniciar progreso</button>
+    </section>
+
+    <section id="explorar" class="seccion">
+      <h2>Consejos ecológicos</h2>
+      <p id="consejo"></p>
+      <button id="nuevo-consejo">🔄 Nuevo consejo</button>
+    </section>
+
+    <section id="perfil" class="seccion">
+      <h2>Perfil de Usuario</h2>
+      <p>👤 Nombre: <span id="nombre-usuario"></span></p>
+      <p>⭐ Nivel: <span id="nivel"></span></p>
+      <p>💧 Puntos: <span id="puntos"></span></p>
+
+      <div id="barra-nivel">
+        <div id="xp"></div>
+      </div>
+    </section>
+
+    <section id="ranking" class="seccion">
+      <h2>Ranking local</h2>
+      <ul id="lista-ranking"></ul>
+    </section>
+
+    <section id="configuracion" class="seccion">
+      <h2>Configuración</h2>
+      <label for="nombre-input">Cambiar nombre:</label>
+      <input type="text" id="nombre-input" placeholder="Tu nombre..." />
+      <button id="guardar-nombre">💾 Guardar</button>
+      <hr/>
+      <button id="limpiar-datos">🧹 Borrar todo</button>
+    </section>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

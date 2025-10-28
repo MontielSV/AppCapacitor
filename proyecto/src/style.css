@@ -1,0 +1,363 @@
+/* 🌿 FUENTE Y BASE */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  color: #1b5e20;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffffb3;
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🌿 ENCABEZADO */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 4px;
+}
+
+header p {
+  font-size: 0.95em;
+  color: #388e3c;
+}
+
+/* 🧭 NAVEGACIÓN */
+nav {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  background: #a5d6a7b0;
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+nav button {
+  flex: 1;
+  margin: 3px;
+  background: #66bb6a;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+nav button:hover,
+nav button:focus {
+  background: #388e3c;
+  transform: scale(1.03);
+}
+
+/* 🗂️ SECCIONES */
+.seccion {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.seccion.activa {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🧩 TARJETAS DE RETOS */
+.reto {
+  background: #f1f8e9;
+  border-left: 6px solid #66bb6a;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.reto span {
+  flex: 1;
+}
+
+.reto button {
+  background: #43a047;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: all 0.3s;
+}
+
+.reto button:hover {
+  background: #2e7d32;
+  transform: scale(1.1);
+}
+
+/* 📝 FORMULARIO NUEVOS RETOS */
+#form-reto {
+  display: flex;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+#form-reto input {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid #a5d6a7;
+  border-radius: 8px;
+  outline: none;
+}
+
+#form-reto button {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#form-reto button:hover {
+  background: #1b5e20;
+}
+
+/* 🏅 BADGES */
+#lista-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.badge {
+  background: #a5d6a7;
+  width: 60px;
+  height: 60px;
+  margin: 6px;
+  border-radius: 50%;
+  font-size: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  animation: pop 0.4s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* 🔁 BOTONES ACCIÓN */
+#reset, #nuevo-consejo, #guardar-nombre, #limpiar-datos {
+  background: #43a047;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 12px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+#reset:hover, #limpiar-datos:hover {
+  background: #c62828;
+  transform: scale(1.02);
+}
+
+/* 💧 BARRAS DE PROGRESO */
+#barra-nivel, #barra-progreso {
+  background: #c8e6c9;
+  border-radius: 12px;
+  height: 14px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+#xp {
+  height: 100%;
+  background: linear-gradient(90deg, #81c784, #388e3c);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* 🧭 CONSEJOS */
+#consejo {
+  text-align: center;
+  background: #f1f8e9;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-style: italic;
+}
+
+/* 🏆 RANKING */
+#lista-ranking {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#lista-ranking li {
+  background: #e8f5e9;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* ⚙️ CONFIGURACIÓN */
+#configuracion input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #a5d6a7;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width: 600px) {
+  .app {
+    padding: 15px;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+    background: #81c784;
+    z-index: 100;
+  }
+
+  nav button {
+    border-radius: 0;
+    padding: 10px 0;
+    font-size: 1.1em;
+  }
+
+  header {
+    margin-top: 10px;
+  }
+
+  #reset, #nuevo-consejo, #guardar-nombre, #limpiar-datos {
+    font-size: 1em;
+  }
+
+  #consejo {
+    font-size: 1em;
+  }
+}
+
+/* 🌗 BOTÓN DE TEMA */
+#toggle-tema {
+  background: #388e3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#toggle-tema:hover {
+  background: #1b5e20;
+  transform: scale(1.05);
+}
+
+/* 🌙 MODO OSCURO */
+body.oscuro {
+  background: linear-gradient(135deg, #1b1b1b, #2e2e2e);
+  color: #e0e0e0;
+}
+
+body.oscuro .app {
+  background: #2e2e2eb3;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+body.oscuro nav {
+  background: #424242b0;
+}
+
+body.oscuro nav button {
+  background: #616161;
+}
+
+body.oscuro nav button:hover,
+body.oscuro nav button:focus {
+  background: #9e9e9e;
+}
+
+body.oscuro .reto {
+  background: #3a3a3a;
+  border-left: 6px solid #81c784;
+}
+
+body.oscuro #form-reto input {
+  background: #424242;
+  color: #fff;
+  border-color: #616161;
+}
+
+body.oscuro #form-reto button {
+  background: #81c784;
+  color: #1b1b1b;
+}
+
+body.oscuro #consejo {
+  background: #3a3a3a;
+}
+
+body.oscuro #lista-ranking li {
+  background: #424242;
+}
+
+body.oscuro #reset,
+body.oscuro #nuevo-consejo,
+body.oscuro #guardar-nombre,
+body.oscuro #limpiar-datos {
+  background: #81c784;
+  color: #1b1b1b;
+}
+
+body.oscuro #toggle-tema {
+  background: #81c784;
+  color: #1b1b1b;
+}
