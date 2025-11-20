@@ -2,75 +2,130 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EcoRuta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPuntos — iOS Style</title>
   <link rel="stylesheet" href="src/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="app">
-    <header>
-      <h1>🌿 EcoRuta</h1>
-      <p>Tu guía ecológica urbana</p>
-    </header>
-    <button id="toggle-tema">🌙 Modo oscuro</button>
+  <!-- APP HEADER -->
+  <header class="topbar">
+    <h1>EcoPuntos</h1>
+  </header>
 
-    <!-- Menú de navegación -->
-    <nav>
-      <button data-section="retos">🗓️ Retos</button>
-      <button data-section="explorar">🧭 Consejos</button>
-      <button data-section="perfil">👤 Perfil</button>
-      <button data-section="ranking">🏆 Ranking</button>
-      <button data-section="configuracion">⚙️ Configuración</button>
-    </nav>
+  <!-- NAVIGATION (bottom iOS style) -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-target="home">🔍</button>
+    <button class="nav-btn" data-target="agregar">➕</button>
+    <button class="nav-btn" data-target="consejos">🎲</button>
+    <button class="nav-btn" data-target="ranking">🏆</button>
+    <button class="nav-btn" data-target="perfil">👤</button>
+  </nav>
 
-    <!-- SECCIONES -->
-    <section id="retos" class="seccion activa">
-      <h2>Retos semanales</h2>
-      <div id="lista-retos"></div>
+  <main class="container">
 
-      <form id="form-reto">
-        <input type="text" id="nuevo-reto" placeholder="Nuevo reto..." required>
-        <button type="submit">➕ Agregar</button>
+    <!-- HOME / BUSCAR -->
+    <section id="home" class="panel visible">
+      <h2>¿Qué quieres reciclar?</h2>
+
+      <div class="search-box">
+        <input id="search" placeholder="Ej: botella de vidrio" />
+        <button id="search-btn" class="btn primary">Buscar</button>
+      </div>
+
+      <div id="result" class="card hidden"></div>
+
+      <div id="recycle-actions" class="hidden">
+        <button class="btn success" id="mark-recycled">
+          Marcar como reciclado (+10 pts)
+        </button>
+
+        <!-- Caneca -->
+        <div id="recycle-bin" class="recycle-bin hidden">
+          <div class="bin-icon"></div>
+          <p id="bin-label"></p>
+        </div>
+      </div>
+
+      <h3>Sugerencias</h3>
+      <div id="suggestions" class="chips"></div>
+    </section>
+
+    <!-- AGREGAR OBJETO -->
+    <section id="agregar" class="panel">
+      <h2>Agregar objeto</h2>
+
+      <form id="add-form" class="card">
+        <label>
+          Nombre
+          <input id="add-name" required />
+        </label>
+
+        <label>
+          Cómo reciclar
+          <textarea id="add-instr" rows="3" required></textarea>
+        </label>
+
+        <label>
+          Categoría
+          <select id="add-cat">
+            <option value="plastico">Envoltorios (Amarillo)</option>
+            <option value="papel">Papel / Cartón (Azul)</option>
+            <option value="vidrio">Vidrio (Verde)</option>
+            <option value="organico">Orgánico (Marrón)</option>
+          </select>
+        </label>
+
+        <button class="btn primary" type="submit">Guardar</button>
       </form>
-
-      <div id="lista-badges"></div>
-      <button id="reset">🔄 Reiniciar progreso</button>
     </section>
 
-    <section id="explorar" class="seccion">
-      <h2>Consejos ecológicos</h2>
-      <p id="consejo"></p>
-      <button id="nuevo-consejo">🔄 Nuevo consejo</button>
+    <!-- CONSEJOS -->
+    <section id="consejos" class="panel">
+      <h2>Consejo del día</h2>
+
+      <div class="card tips-box">
+        <p id="random-tip"></p>
+        <button id="btn-random-tip" class="btn icon">🎲</button>
+      </div>
+
+      <h3>Agregar Consejo</h3>
+
+      <form id="form-add-tip" class="card small-card">
+        <input id="new-tip" placeholder="Escribe un consejo..." />
+        <button class="btn primary" type="submit">Añadir</button>
+      </form>
     </section>
 
-    <section id="perfil" class="seccion">
-      <h2>Perfil de Usuario</h2>
-      <p>👤 Nombre: <span id="nombre-usuario"></span></p>
-      <p>⭐ Nivel: <span id="nivel"></span></p>
-      <p>💧 Puntos: <span id="puntos"></span></p>
+    <!-- RANKING -->
+    <section id="ranking" class="panel">
+      <h2>Ranking de Recicladores</h2>
+      <ol id="ranking-list" class="card list"></ol>
+    </section>
 
-      <div id="barra-nivel">
-        <div id="xp"></div>
+    <!-- PERFIL -->
+    <section id="perfil" class="panel">
+      <h2>Mi Perfil</h2>
+
+      <div class="card profile-card">
+        <div class="avatar-row">
+          <div id="avatar" class="avatar">US</div>
+
+          <div class="profile-info">
+            <input id="profile-name" class="profile-input" />
+            <div id="profile-points">0 pts</div>
+          </div>
+        </div>
+
+        <button id="save-profile" class="btn primary">Guardar cambios</button>
+
+        <h3>Actividad reciente</h3>
+        <ul id="profile-activity"></ul>
       </div>
     </section>
 
-    <section id="ranking" class="seccion">
-      <h2>Ranking local</h2>
-      <ul id="lista-ranking"></ul>
-    </section>
+  </main>
 
-    <section id="configuracion" class="seccion">
-      <h2>Configuración</h2>
-      <label for="nombre-input">Cambiar nombre:</label>
-      <input type="text" id="nombre-input" placeholder="Tu nombre..." />
-      <button id="guardar-nombre">💾 Guardar</button>
-      <hr/>
-      <button id="limpiar-datos">🧹 Borrar todo</button>
-    </section>
-  </div>
-
-  <script type="module" src="src/main.js"></script>
+<script type="module" src="./src/main.js"></script>
 </body>
 </html>

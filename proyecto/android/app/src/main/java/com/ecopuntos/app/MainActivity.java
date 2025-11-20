@@ -1,4 +1,4 @@
-package com.ecoruta.app;
+package com.ecopuntos.app;
 
 import com.getcapacitor.BridgeActivity;
 

@@ -1,363 +1,197 @@
-/* 🌿 FUENTE Y BASE */
+/* =======================
+   ESTILO iOS MODERNO
+======================= */
+:root {
+  --accent: #34c759;
+  --bg: #f2f2f7;
+  --card: #ffffff;
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --radius: 18px;
+}
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-  color: #1b5e20;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+  background: var(--bg);
+  color: #1c1c1e;
 }
 
-.app {
-  width: 100%;
-  max-width: 450px;
-  background: #ffffffb3;
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 🌿 ENCABEZADO */
-header {
+/* HEADER */
+.topbar {
+  padding: 18px;
+  font-size: 22px;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 10px;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 4px;
-}
-
-header p {
-  font-size: 0.95em;
-  color: #388e3c;
-}
-
-/* 🧭 NAVEGACIÓN */
-nav {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  background: var(--card);
+  box-shadow: var(--shadow);
   position: sticky;
   top: 0;
-  background: #a5d6a7b0;
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  margin-bottom: 15px;
-  padding: 5px;
+  z-index: 10;
 }
 
-nav button {
-  flex: 1;
-  margin: 3px;
-  background: #66bb6a;
+/* NAV BOTTOM (iOS) */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--card);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+  border-radius: 20px 20px 0 0;
+}
+
+.bottom-nav button {
+  background: none;
   border: none;
-  color: white;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9em;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
+  font-size: 20px;
+  opacity: .5;
 }
 
-nav button:hover,
-nav button:focus {
-  background: #388e3c;
-  transform: scale(1.03);
+.bottom-nav button.active {
+  opacity: 1;
+  transform: scale(1.2);
+  color: var(--accent);
 }
 
-/* 🗂️ SECCIONES */
-.seccion {
+/* PANELS */
+.container {
+  padding: 20px;
+  padding-bottom: 90px;
+}
+
+.panel {
   display: none;
-  animation: fadeIn 0.4s ease-in-out;
 }
 
-.seccion.activa {
+.panel.visible {
   display: block;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+/* CARDS */
+.card {
+  background: var(--card);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 15px;
 }
 
-/* 🧩 TARJETAS DE RETOS */
-.reto {
-  background: #f1f8e9;
-  border-left: 6px solid #66bb6a;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.reto span {
-  flex: 1;
-}
-
-.reto button {
-  background: #43a047;
+/* BUTTONS */
+.btn {
+  padding: 10px 14px;
+  border-radius: 14px;
   border: none;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 8px;
   cursor: pointer;
-  font-size: 1.1em;
-  transition: all 0.3s;
 }
 
-.reto button:hover {
-  background: #2e7d32;
-  transform: scale(1.1);
-}
-
-/* 📝 FORMULARIO NUEVOS RETOS */
-#form-reto {
-  display: flex;
-  margin-top: 10px;
-  gap: 5px;
-}
-
-#form-reto input {
-  flex: 1;
-  padding: 8px;
-  border: 2px solid #a5d6a7;
-  border-radius: 8px;
-  outline: none;
-}
-
-#form-reto button {
-  background: #2e7d32;
+.btn.primary {
+  background: var(--accent);
   color: white;
-  border: none;
+}
+
+.btn.success {
+  background: #30b158;
+  color: white;
+}
+
+.btn.icon {
+  font-size: 24px;
   padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
 }
 
-#form-reto button:hover {
-  background: #1b5e20;
+/* SEARCH */
+.search-box {
+  display: flex;
+  gap: 10px;
 }
 
-/* 🏅 BADGES */
-#lista-badges {
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+}
+
+/* SUGERENCIAS */
+.chips {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 10px;
+}
+
+.chip {
+  padding: 6px 12px;
+  background: #e5e5ea;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* RECYCLE BIN */
+.recycle-bin {
+  text-align: center;
   margin-top: 15px;
 }
 
-.badge {
-  background: #a5d6a7;
+.bin-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  margin:  auto;
+}
+
+/* COLORES POR CATEGORÍA */
+.bin-yellow { background: #ffd60a; }
+.bin-blue { background: #2196f3; }
+.bin-green { background: #2ecc71; }
+.bin-brown { background: #8d6e63; }
+
+/* PERFIL */
+.avatar {
   width: 60px;
   height: 60px;
-  margin: 6px;
+  background: var(--accent);
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
   border-radius: 50%;
-  font-size: 2em;
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  animation: pop 0.4s ease forwards;
+  align-items: center;
+}
+
+.profile-input {
+  border: none;
+  font-size: 18px;
+  width: 100%;
+  padding: 6px 0;
+  border-bottom: 1px solid #ccc;
+  background: none;
+}
+
+/* LISTAS */
+.list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  h2 { font-size: 20px; }
+  .btn { font-size: 14px; }
+}
+/* ANIMACIÓN PARA CANECA AL APARECER */
+.bin-icon {
+  animation: pop 0.3s ease-out;
 }
 
 @keyframes pop {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
-/* 🔁 BOTONES ACCIÓN */
-#reset, #nuevo-consejo, #guardar-nombre, #limpiar-datos {
-  background: #43a047;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  margin-top: 12px;
-  cursor: pointer;
-  width: 100%;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-
-#reset:hover, #limpiar-datos:hover {
-  background: #c62828;
-  transform: scale(1.02);
-}
-
-/* 💧 BARRAS DE PROGRESO */
-#barra-nivel, #barra-progreso {
-  background: #c8e6c9;
-  border-radius: 12px;
-  height: 14px;
-  overflow: hidden;
-  margin-top: 8px;
-}
-
-#xp {
-  height: 100%;
-  background: linear-gradient(90deg, #81c784, #388e3c);
-  width: 0%;
-  transition: width 0.4s ease;
-}
-
-/* 🧭 CONSEJOS */
-#consejo {
-  text-align: center;
-  background: #f1f8e9;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-style: italic;
-}
-
-/* 🏆 RANKING */
-#lista-ranking {
-  list-style: none;
-  padding: 0;
-  margin-top: 10px;
-}
-
-#lista-ranking li {
-  background: #e8f5e9;
-  margin: 5px 0;
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: 500;
-}
-
-/* ⚙️ CONFIGURACIÓN */
-#configuracion input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #a5d6a7;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-
-/* 📱 RESPONSIVE */
-@media (max-width: 600px) {
-  .app {
-    padding: 15px;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 0;
-    background: #81c784;
-    z-index: 100;
-  }
-
-  nav button {
-    border-radius: 0;
-    padding: 10px 0;
-    font-size: 1.1em;
-  }
-
-  header {
-    margin-top: 10px;
-  }
-
-  #reset, #nuevo-consejo, #guardar-nombre, #limpiar-datos {
-    font-size: 1em;
-  }
-
-  #consejo {
-    font-size: 1em;
-  }
-}
-
-/* 🌗 BOTÓN DE TEMA */
-#toggle-tema {
-  background: #388e3c;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  margin-top: 10px;
-  transition: background 0.3s, transform 0.2s;
-}
-
-#toggle-tema:hover {
-  background: #1b5e20;
-  transform: scale(1.05);
-}
-
-/* 🌙 MODO OSCURO */
-body.oscuro {
-  background: linear-gradient(135deg, #1b1b1b, #2e2e2e);
-  color: #e0e0e0;
-}
-
-body.oscuro .app {
-  background: #2e2e2eb3;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-}
-
-body.oscuro nav {
-  background: #424242b0;
-}
-
-body.oscuro nav button {
-  background: #616161;
-}
-
-body.oscuro nav button:hover,
-body.oscuro nav button:focus {
-  background: #9e9e9e;
-}
-
-body.oscuro .reto {
-  background: #3a3a3a;
-  border-left: 6px solid #81c784;
-}
-
-body.oscuro #form-reto input {
-  background: #424242;
-  color: #fff;
-  border-color: #616161;
-}
-
-body.oscuro #form-reto button {
-  background: #81c784;
-  color: #1b1b1b;
-}
-
-body.oscuro #consejo {
-  background: #3a3a3a;
-}
-
-body.oscuro #lista-ranking li {
-  background: #424242;
-}
-
-body.oscuro #reset,
-body.oscuro #nuevo-consejo,
-body.oscuro #guardar-nombre,
-body.oscuro #limpiar-datos {
-  background: #81c784;
-  color: #1b1b1b;
-}
-
-body.oscuro #toggle-tema {
-  background: #81c784;
-  color: #1b1b1b;
+/* BRILLO DEL COLOR */
+.bin-yellow, .bin-blue, .bin-green, .bin-brown {
+  box-shadow: 0 0 18px rgba(0,0,0,0.15), 0 0 12px currentColor;
 }
